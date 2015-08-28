@@ -1,0 +1,1 @@
+- textbook.txtを更新したら、デプロイ前にparsed.jsonを作成(更新)し、parsed.jsonをgit管理化に入れておくこと。herokuでファイルを永続化できないため。

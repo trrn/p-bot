@@ -1,7 +1,7 @@
 # vim:ts=2 sw=2 ts=2 et:
 # Description
 #   哲学発言的bot
-#   ある文章の塊をを形態素解析し、
+#   ある文章の塊を形態素解析し、
 #   ランダムな文章をマルコフ連鎖で作成
 #
 # Dependencies:
@@ -12,7 +12,7 @@
 #
 # Notes:
 #   textbook.txt - 1文ごとに改行された文章の塊(必須)
-#   parsed.json  - キャッシュファイル(textbook.txtを形態素解析したもの)
+#   parsed.json  - textbook.txtを形態素解析したもの(herokuへデプロイする際には必須)
 #
 # Author:
 #   trrn
@@ -48,7 +48,6 @@ module.exports = (robot) ->
           res.send err
         else
           res.send "#{CLEAR_CACHE_WORDS} done."
-          res.send "しばらく死ぬかも.."
       )
 
     else if ///^\s*#{HELP_WORDS}\s*$///i.test res.match[1]
@@ -94,8 +93,6 @@ module.exports = (robot) ->
   usage = (res) ->
     res.send "次の言葉に勝手に反応します\n`" + PHILOSOPHICAL_WORDS + "`\n\n" + \
              "メンションを送ると検索？します\n`\@#{robot.name} 土俵`\n\n" + \
-             "キャッシュのクリア（しばらく死ぬかも）\n`@#{robot.name} #{CLEAR_CACHE_WORDS}`\n\n" + \
              "ボットを追い出す\n`/kick @#{robot.name}`\n\n" + \
-             "ボットを招待する\n`/invite @#{robot.name}`\n\n" + \
-             "<#{REPO_URL}>"
+             "ボットを招待する\n`/invite @#{robot.name}`"
 
